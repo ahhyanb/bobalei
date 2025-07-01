@@ -1,6 +1,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import Hero from "./Hero"; // new import
+import WhyBobalei from "./WhyBobalei";
 
 const featuredDrinks = [
   {
@@ -29,28 +30,7 @@ export default function Home() {
         <Hero />
 
         {/* Why Choose Us */}
-        <section className="bg-white py-16 px-4">
-          <h2 className="text-3xl font-bold text-center text-[#F28B8B] mb-10">
-            Why Bobalei?
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto text-center">
-            <div>
-              <div className="text-4xl mb-2">🧋</div>
-              <h3 className="font-semibold text-lg">Fresh Ingredients</h3>
-              <p className="text-sm text-gray-500 mt-2">We use real tea and natural flavors.</p>
-            </div>
-            <div>
-              <div className="text-4xl mb-2">🚚</div>
-              <h3 className="font-semibold text-lg">Quick Pickup</h3>
-              <p className="text-sm text-gray-500 mt-2">Order online & pick up in minutes.</p>
-            </div>
-            <div>
-              <div className="text-4xl mb-2">🌴</div>
-              <h3 className="font-semibold text-lg">Hawaii-Made</h3>
-              <p className="text-sm text-gray-500 mt-2">Locally owned & community loved.</p>
-            </div>
-          </div>
-        </section>
+        <WhyBobalei />
 
         {/* Featured Drinks */}
         <section className="py-16 px-4 bg-[#fefefe]">
