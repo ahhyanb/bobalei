@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { client, urlFor } from "../../sanityClient";
 
 export default function DrinkDetail() {
   const { drinkName } = useParams();
   const { state } = useLocation();
+  const navigate = useNavigate();
   const [drink, setDrink] = useState(state?.drink || null);
 
   useEffect(() => {
@@ -40,6 +41,14 @@ export default function DrinkDetail() {
 
   return (
     <section className="max-w-4xl mx-auto p-6 mt-20">
+      {/* Back Button */}
+      <button
+        onClick={() => navigate(-1)}
+        className="text-[#906249] hover:text-[#F28B8B] mb-8 text-sm flex items-center"
+      >
+        ← Back
+      </button>
+
       <div className="grid md:grid-cols-2 gap-10 items-start">
         {/* Image */}
         <img
