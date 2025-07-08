@@ -1,264 +1,141 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu as MenuIcon, X as CloseIcon } from "lucide-react";
-import { Link } from "react-router-dom";
+
+// Centralized submenu config
+const menuLinks = [
+  { name: "See all", href: "/menu#all" },
+  { name: "Matcha & Horjicha", href: "/menu#matcha-horjicha" },
+  { name: "Milk Teas", href: "/menu#milk-teas" },
+  { name: "Coffee", href: "/menu#coffee" },
+  { name: "Frappe", href: "/menu#frappe" },
+  { name: "Specialty Blend", href: "/menu#specialty-blend" },
+  { name: "Refreshers", href: "/menu#refreshers" },
+  { name: "Fizz", href: "/menu#fizz" },
+];
+
+const aboutLinks = [
+  { name: "Our Story", href: "/about" },
+  { name: "Location", href: "/location" },
+  { name: "Support", href: "/support" },
+];
+
+const orderLink =
+  "https://order.online/store/bobalei-wailuku-30956807/?hideModal=true&pickup=true&rwg_token=ACgRB3fu7JRiqHebuSoEMiP4dfIA4vd8Zx7g0SBwI1zDaSG8bsNtvulDM3yB513nu7mtn1qnwUnlNmwA5ZNE2hhkhLZuQH4uzQ==&utm_source=gfo";
 
 export default function Header() {
-	const [scrolled, setScrolled] = useState(false);
-	const [active, setActive] = useState(null);
-	const [mobileOpen, setMobileOpen] = useState(false);
-	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-	const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [submenu, setSubmenu] = useState(null);
+  const location = useLocation();
 
-	useEffect(() => {
-		const handleScroll = () => setScrolled(window.scrollY > 50);
-		window.addEventListener("scroll", handleScroll);
-		return () => window.removeEventListener("scroll", handleScroll);
-	}, []);
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-	const orderLink =
-		"https://order.online/store/bobalei-wailuku-30956807/?hideModal=true&pickup=true&rwg_token=ACgRB3fu7JRiqHebuSoEMiP4dfIA4vd8Zx7g0SBwI1zDaSG8bsNtvulDM3yB513nu7mtn1qnwUnlNmwA5ZNE2hhkhLZuQH4uzQ==&utm_source=gfo";
+  useEffect(() => {
+    setIsMobileMenuOpen(false); // close on route change
+  }, [location]);
 
-	return (
-		<header
-			className={`fixed top-0 left-0 w-full z-50 backdrop-blur-md transition-all duration-300 ${
-				scrolled || active ? "bg-white/80 shadow-sm py-2" : "bg-white/20 py-4"
-			}`}
-			onMouseLeave={() => setActive(null)}
-		>
-			<div className="max-w-6xl mx-auto px-4 flex flex-col">
-				<div className="relative flex justify-center items-center">
-					{/* DESKTOP NAV LEFT */}
-					<nav
-						className={`hidden sm:flex space-x-6 text-sm font-medium absolute left-0 ${
-							scrolled ? "text-[#F28B8B]" : "text-[#7eb5a3]"
-						}`}
-					>
-						<Link
-							to="/"
-							onMouseEnter={() => setActive(null)}
-							className="hover:text-[#7eb5a3]"
-						>
-							Home
-						</Link>
-						<Link
-							to="/menu"
-							onMouseEnter={() => setActive("menu")}
-							className={`hover:text-[#7eb5a3] ${
-								active === "menu" ? "border-b-2 border-[#F28B8B]" : ""
-							}`}
-						>
-							Menu
-						</Link>
-						<Link
-							to="/about"
-							onMouseEnter={() => setActive("about")}
-							className={`hover:text-[#7eb5a3] ${
-								active === "about" ? "border-b-2 border-[#F28B8B]" : ""
-							}`}
-						>
-							About Us
-						</Link>
-					</nav>
+  const navClass = `fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md ${
+    scrolled || submenu ? "bg-white/80 py-2 shadow" : "bg-white/20 py-4"
+  }`;
 
-					{/* MOBILE HAMBURGER */}
-					<button
-						className="sm:hidden absolute left-4"
-						onClick={() => setMobileOpen(!mobileOpen)}
-					>
-						{mobileOpen ? (
-							<CloseIcon className="w-6 h-6 text-[#F28B8B]" />
-						) : (
-							<MenuIcon className="w-6 h-6 text-[#F28B8B]" />
-						)}
-					</button>
+  return (
+    <header className={navClass} onMouseLeave={() => setSubmenu(null)}>
+      <div className="max-w-6xl mx-auto px-4 flex flex-col">
+        <div className="relative flex justify-center items-center">
+          {/* Desktop Nav */}
+          <nav className="hidden sm:flex space-x-6 text-sm font-medium absolute left-0 text-[#7eb5a3]">
+            <Link to="/" onMouseEnter={() => setSubmenu(null)}>Home</Link>
+            <span onMouseEnter={() => setSubmenu("menu")} className="cursor-pointer hover:text-[#F28B8B]">Menu</span>
+            <span onMouseEnter={() => setSubmenu("about")} className="cursor-pointer hover:text-[#F28B8B]">About Us</span>
+          </nav>
 
-					{/* CENTER LOGO */}
-					<Link to="/">
-						<img src="/logo.png" alt="Bobalei logo" className="h-20 md:h-20" />
-					</Link>
+          {/* Mobile hamburger */}
+          <button
+            className="sm:hidden absolute left-4"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          >
+            {isMobileMenuOpen ? (
+              <CloseIcon className="w-6 h-6 text-[#F28B8B]" />
+            ) : (
+              <MenuIcon className="w-6 h-6 text-[#F28B8B]" />
+            )}
+          </button>
 
-					{/* ORDER NOW (EXTERNAL LINK) */}
-					<a
-						href={orderLink}
-						target="_blank"
-						rel="noopener noreferrer"
-						className={`absolute right-0 px-4 py-2 rounded-full text-sm font-medium transition hidden sm:inline-block ${
-							scrolled
-								? "bg-[#91C3B0] text-white hover:bg-[#7eb5a3]"
-								: "bg-[#F28B8B]/70 text-white hover:bg-[#7eb5a3]"
-						}`}
-					>
-						Order Now
-					</a>
-				</div>
+          {/* Center logo */}
+          <Link to="/">
+            <img src="/logo.png" alt="Bobalei logo" className="h-20" />
+          </Link>
 
-				{/* DESKTOP SUBMENUS */}
-				{active === "menu" && (
-					<div className="hidden sm:flex justify-left mt-2 mb-6">
-						<div className="flex flex-col">
-							<Link
-								to="/menu#all"
-								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
-							>
-								See all
-							</Link>
-							<Link
-								to="/menu#matcha-horjicha"
-								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
-							>
-								Matcha & Horjicha
-							</Link>
-							<Link
-								to="/menu#milk-teas"
-								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
-							>
-								Milk Teas
-							</Link>
-							<Link
-								to="/menu#coffee"
-								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
-							>
-								Coffee
-							</Link>
-							<Link
-								to="/menu#frappe"
-								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
-							>
-								Frappe
-							</Link>
-							<Link
-								to="/menu#specialty-blend"
-								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
-							>
-								Specialty Blend
-							</Link>
-							<Link
-								to="/menu#refreshers"
-								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
-							>
-								Refreshers
-							</Link>
-							<Link
-								to="/menu#fizz"
-								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
-							>
-								Fizz
-							</Link>
-						</div>
-					</div>
-				)}
+          {/* Desktop "Order Now" */}
+          <a
+            href={orderLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-block absolute right-0 px-4 py-2 rounded-full bg-[#F28B8B]/70 text-white text-sm hover:bg-[#7eb5a3] transition"
+          >
+            Order Now
+          </a>
+        </div>
 
-				{active === "about" && (
-					<div className="hidden sm:flex justify-left mt-2 mb-6">
-						<div className="flex flex-col">
-							<Link
-								to="/about"
-								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
-							>
-								Our Story
-							</Link>
-							<Link
-								to="/location"
-								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
-							>
-								Location
-							</Link>
-							<Link
-								to="/support"
-								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
-							>
-								Support
-							</Link>
-						</div>
-					</div>
-				)}
+        {/* Desktop submenu */}
+        {submenu && (
+          <div className="hidden sm:flex mt-2 mb-6">
+            <div className="flex flex-col">
+              {(submenu === "menu" ? menuLinks : aboutLinks).map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
-				{/* MOBILE MENU */}
-				{mobileOpen && (
-					<div className="flex flex-col space-y-2 mt-2 text-sm font-medium text-[#7eb5a3] items-center text-center">
-						<Link to="/" onClick={() => setMobileOpen(false)} className="py-2">
-							Home
-						</Link>
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="flex flex-col items-center text-center text-sm font-medium text-[#7eb5a3] space-y-2 mt-4">
+            <Link to="/">Home</Link>
 
-						<button
-							onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-							className="font-semibold py-2"
-						>
-							Menu
-						</button>
-						<div
-							className={`overflow-hidden transition-all duration-300 ${
-								mobileMenuOpen ? "max-h-40" : "max-h-0"
-							}`}
-						>
-							<Link
-								to="/menu#milk-tea"
-								onClick={() => setMobileOpen(false)}
-								className="block py-2 text-gray-500"
-							>
-								Milk Tea
-							</Link>
-							<Link
-								to="/menu#smoothies"
-								onClick={() => setMobileOpen(false)}
-								className="block py-2 text-gray-500"
-							>
-								Smoothies
-							</Link>
-							<Link
-								to="/menu#bowls"
-								onClick={() => setMobileOpen(false)}
-								className="block py-2 text-gray-500"
-							>
-								Bowls
-							</Link>
-						</div>
+            {/* Mobile Menu Dropdown */}
+            <details className="w-full">
+              <summary className="cursor-pointer py-2 font-semibold">Menu</summary>
+              {menuLinks.map((link) => (
+                <Link key={link.href} to={link.href} className="block py-1 text-gray-500">
+                  {link.name}
+                </Link>
+              ))}
+            </details>
 
-						<button
-							onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
-							className="font-semibold py-2"
-						>
-							About Us
-						</button>
-						<div
-							className={`overflow-hidden transition-all duration-300 ${
-								mobileAboutOpen ? "max-h-40" : "max-h-0"
-							}`}
-						>
-							<Link
-								to="/about"
-								onClick={() => setMobileOpen(false)}
-								className="block py-2 text-gray-500"
-							>
-								Our Story
-							</Link>
-							<Link
-								to="/location"
-								onClick={() => setMobileOpen(false)}
-								className="block py-2 text-gray-500"
-							>
-								Location
-							</Link>
-							<Link
-								to="/support"
-								onClick={() => setMobileOpen(false)}
-								className="block py-2 text-gray-500"
-							>
-								Support
-							</Link>
-						</div>
+            {/* Mobile About Dropdown */}
+            <details className="w-full">
+              <summary className="cursor-pointer py-2 font-semibold">About Us</summary>
+              {aboutLinks.map((link) => (
+                <Link key={link.href} to={link.href} className="block py-1 text-gray-500">
+                  {link.name}
+                </Link>
+              ))}
+            </details>
 
-						<a
-							href={orderLink}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="w-[90%] max-w-xs bg-[#F28B8B]/70 text-white text-center rounded-full px-4 py-3 mt-4"
-						>
-							Order Now
-						</a>
-					</div>
-				)}
-			</div>
-		</header>
-	);
+            {/* Mobile Order Now */}
+            <a
+              href={orderLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-[90%] max-w-xs bg-[#F28B8B]/70 text-white text-center rounded-full px-4 py-3 mt-4"
+            >
+              Order Now
+            </a>
+          </div>
+        )}
+      </div>
+    </header>
+  );
 }
