@@ -33,20 +33,28 @@ export default function Header() {
 							scrolled ? "text-[#F28B8B]" : "text-[#7eb5a3]"
 						}`}
 					>
-						<Link to="/" onMouseEnter={() => setActive(null)} className="hover:text-[#7eb5a3]">
+						<Link
+							to="/"
+							onMouseEnter={() => setActive(null)}
+							className="hover:text-[#7eb5a3]"
+						>
 							Home
 						</Link>
 						<Link
 							to="/menu"
 							onMouseEnter={() => setActive("menu")}
-							className={`hover:text-[#7eb5a3] ${active === "menu" ? "border-b-2 border-[#F28B8B]" : ""}`}
+							className={`hover:text-[#7eb5a3] ${
+								active === "menu" ? "border-b-2 border-[#F28B8B]" : ""
+							}`}
 						>
 							Menu
 						</Link>
 						<Link
 							to="/about"
 							onMouseEnter={() => setActive("about")}
-							className={`hover:text-[#7eb5a3] ${active === "about" ? "border-b-2 border-[#F28B8B]" : ""}`}
+							className={`hover:text-[#7eb5a3] ${
+								active === "about" ? "border-b-2 border-[#F28B8B]" : ""
+							}`}
 						>
 							About Us
 						</Link>
@@ -74,7 +82,7 @@ export default function Header() {
 						href={orderLink}
 						target="_blank"
 						rel="noopener noreferrer"
-						className={`absolute right-0 px-4 py-2 rounded-full text-sm font-medium transition ${
+						className={`absolute right-0 px-4 py-2 rounded-full text-sm font-medium transition hidden sm:inline-block ${
 							scrolled
 								? "bg-[#91C3B0] text-white hover:bg-[#7eb5a3]"
 								: "bg-[#F28B8B]/70 text-white hover:bg-[#7eb5a3]"
@@ -88,14 +96,54 @@ export default function Header() {
 				{active === "menu" && (
 					<div className="hidden sm:flex justify-left mt-2 mb-6">
 						<div className="flex flex-col">
-							<Link to="/menu#all" className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]">See all</Link>
-							<Link to="/menu#matcha-horjicha" className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]">Matcha & Horjicha</Link>
-							<Link to="/menu#milk-teas" className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]">Milk Teas</Link>
-							<Link to="/menu#coffee" className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]">Coffee</Link>
-							<Link to="/menu#frappe" className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]">Frappe</Link>
-							<Link to="/menu#specialty-blend" className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]">Specialty Blend</Link>
-							<Link to="/menu#refreshers" className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]">Refreshers</Link>
-							<Link to="/menu#fizz" className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]">Fizz</Link>
+							<Link
+								to="/menu#all"
+								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
+							>
+								See all
+							</Link>
+							<Link
+								to="/menu#matcha-horjicha"
+								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
+							>
+								Matcha & Horjicha
+							</Link>
+							<Link
+								to="/menu#milk-teas"
+								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
+							>
+								Milk Teas
+							</Link>
+							<Link
+								to="/menu#coffee"
+								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
+							>
+								Coffee
+							</Link>
+							<Link
+								to="/menu#frappe"
+								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
+							>
+								Frappe
+							</Link>
+							<Link
+								to="/menu#specialty-blend"
+								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
+							>
+								Specialty Blend
+							</Link>
+							<Link
+								to="/menu#refreshers"
+								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
+							>
+								Refreshers
+							</Link>
+							<Link
+								to="/menu#fizz"
+								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
+							>
+								Fizz
+							</Link>
 						</div>
 					</div>
 				)}
@@ -103,9 +151,24 @@ export default function Header() {
 				{active === "about" && (
 					<div className="hidden sm:flex justify-left mt-2 mb-6">
 						<div className="flex flex-col">
-							<Link to="/about" className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]">Our Story</Link>
-							<Link to="/location" className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]">Location</Link>
-							<Link to="/support" className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]">Support</Link>
+							<Link
+								to="/about"
+								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
+							>
+								Our Story
+							</Link>
+							<Link
+								to="/location"
+								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
+							>
+								Location
+							</Link>
+							<Link
+								to="/support"
+								className="text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
+							>
+								Support
+							</Link>
 						</div>
 					</div>
 				)}
@@ -113,27 +176,83 @@ export default function Header() {
 				{/* MOBILE MENU */}
 				{mobileOpen && (
 					<div className="flex flex-col space-y-2 mt-2 text-sm font-medium text-[#7eb5a3] items-center text-center">
-						<Link to="/" onClick={() => setMobileOpen(false)} className="py-2">Home</Link>
+						<Link to="/" onClick={() => setMobileOpen(false)} className="py-2">
+							Home
+						</Link>
 
-						<button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="font-semibold py-2">Menu</button>
-						<div className={`overflow-hidden transition-all duration-300 ${mobileMenuOpen ? "max-h-40" : "max-h-0"}`}>
-							<Link to="/menu#milk-tea" onClick={() => setMobileOpen(false)} className="block py-2 text-gray-500">Milk Tea</Link>
-							<Link to="/menu#smoothies" onClick={() => setMobileOpen(false)} className="block py-2 text-gray-500">Smoothies</Link>
-							<Link to="/menu#bowls" onClick={() => setMobileOpen(false)} className="block py-2 text-gray-500">Bowls</Link>
+						<button
+							onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+							className="font-semibold py-2"
+						>
+							Menu
+						</button>
+						<div
+							className={`overflow-hidden transition-all duration-300 ${
+								mobileMenuOpen ? "max-h-40" : "max-h-0"
+							}`}
+						>
+							<Link
+								to="/menu#milk-tea"
+								onClick={() => setMobileOpen(false)}
+								className="block py-2 text-gray-500"
+							>
+								Milk Tea
+							</Link>
+							<Link
+								to="/menu#smoothies"
+								onClick={() => setMobileOpen(false)}
+								className="block py-2 text-gray-500"
+							>
+								Smoothies
+							</Link>
+							<Link
+								to="/menu#bowls"
+								onClick={() => setMobileOpen(false)}
+								className="block py-2 text-gray-500"
+							>
+								Bowls
+							</Link>
 						</div>
 
-						<button onClick={() => setMobileAboutOpen(!mobileAboutOpen)} className="font-semibold py-2">About Us</button>
-						<div className={`overflow-hidden transition-all duration-300 ${mobileAboutOpen ? "max-h-40" : "max-h-0"}`}>
-							<Link to="/about" onClick={() => setMobileOpen(false)} className="block py-2 text-gray-500">Our Story</Link>
-							<Link to="/location" onClick={() => setMobileOpen(false)} className="block py-2 text-gray-500">Location</Link>
-							<Link to="/support" onClick={() => setMobileOpen(false)} className="block py-2 text-gray-500">Support</Link>
+						<button
+							onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+							className="font-semibold py-2"
+						>
+							About Us
+						</button>
+						<div
+							className={`overflow-hidden transition-all duration-300 ${
+								mobileAboutOpen ? "max-h-40" : "max-h-0"
+							}`}
+						>
+							<Link
+								to="/about"
+								onClick={() => setMobileOpen(false)}
+								className="block py-2 text-gray-500"
+							>
+								Our Story
+							</Link>
+							<Link
+								to="/location"
+								onClick={() => setMobileOpen(false)}
+								className="block py-2 text-gray-500"
+							>
+								Location
+							</Link>
+							<Link
+								to="/support"
+								onClick={() => setMobileOpen(false)}
+								className="block py-2 text-gray-500"
+							>
+								Support
+							</Link>
 						</div>
 
 						<a
 							href={orderLink}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="bg-[#F28B8B]/70 text-white rounded-full px-4 py-3 mt-2"
+							className="w-[90%] max-w-xs bg-[#F28B8B]/70 text-white text-center rounded-full px-4 py-3 mt-4"
 						>
 							Order Now
 						</a>
