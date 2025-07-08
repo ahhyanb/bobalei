@@ -8,15 +8,11 @@ const Hero = () => {
     setLoaded(true);
   }, []);
 
+  const orderLink =
+    "https://order.online/store/bobalei-wailuku-30956807/?hideModal=true&pickup=true&rwg_token=ACgRB3fu7JRiqHebuSoEMiP4dfIA4vd8Zx7g0SBwI1zDaSG8bsNtvulDM3yB513nu7mtn1qnwUnlNmwA5ZNE2hhkhLZuQH4uzQ==&utm_source=gfo";
+
   return (
     <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#91C3B0]/50 via-[#F28B8B]/30 to-[#fffdfc]">
-      {/* Background abstract shapes */}
-      {/* <div className="absolute inset-0 z-0">
-        <div className="w-[500px] h-[500px] bg-[#91C3B0] rounded-full opacity-50 absolute -top-20 -left-32 blur-3xl"></div>
-        <div className="w-[600px] h-[600px] border-[16px] border-[#F28B8B] rounded-full opacity-60 absolute -bottom-16 -right-20 blur-2xl"></div>
-        <div className="w-[300px] h-[300px] bg-[#F28B8B] rounded-full opacity-40 absolute top-1/4 left-1/2 transform -translate-x-1/2 blur-2xl"></div>
-      </div> */}
-
       {/* Main content */}
       <div
         className={`relative z-10 max-w-6xl mx-auto h-full flex flex-col-reverse md:flex-row items-center justify-center gap-10 px-4 transition-all duration-1000 ease-out ${
@@ -32,9 +28,14 @@ const Hero = () => {
           <p className="mt-4 text-white/90 max-w-md mx-auto md:mx-0 drop-shadow">
             Acai base, almond milk, granola, and seasonal fruits in a dreamy blend.
           </p>
-          <button className="mt-6 bg-[#F28B8B] text-white px-6 py-3 rounded-full hover:bg-[#e07171] transition font-medium shadow-lg">
+          <a
+            href={orderLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-6 bg-[#F28B8B] text-white px-6 py-3 rounded-full hover:bg-[#e07171] transition font-medium shadow-lg"
+          >
             Order Now
-          </button>
+          </a>
         </div>
 
         <img
