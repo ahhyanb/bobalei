@@ -11,11 +11,11 @@ const Hero = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#91C3B0]/50 via-[#F28B8B]/30 to-[#fffdfc]">
       {/* Background abstract shapes */}
-      <div className="absolute inset-0 z-0">
+      {/* <div className="absolute inset-0 z-0">
         <div className="w-[500px] h-[500px] bg-[#91C3B0] rounded-full opacity-50 absolute -top-20 -left-32 blur-3xl"></div>
         <div className="w-[600px] h-[600px] border-[16px] border-[#F28B8B] rounded-full opacity-60 absolute -bottom-16 -right-20 blur-2xl"></div>
         <div className="w-[300px] h-[300px] bg-[#F28B8B] rounded-full opacity-40 absolute top-1/4 left-1/2 transform -translate-x-1/2 blur-2xl"></div>
-      </div>
+      </div> */}
 
       {/* Main content */}
       <div
@@ -40,7 +40,7 @@ const Hero = () => {
         <img
           src="/main-image.png"
           alt="Summer Bowl"
-          className="w-[300px] md:w-[420px] object-contain drop-shadow-2xl"
+          className="w-[400px] md:w-[620px] object-contain drop-shadow-2xl"
         />
       </div>
     </section>

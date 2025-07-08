@@ -1,102 +1,86 @@
-const featuredDrinks = [
-	{
-		name: "Brown Sugar Milk Tea",
-		price: "$5.50",
-		image: "https://picsum.photos/300/300?random=1",
-	},
-	{
-		name: "Taro Smoothie",
-		price: "$6.00",
-		image: "https://picsum.photos/300/300?random=2",
-	},
-	{
-		name: "Strawberry Matcha Latte",
-		price: "$6.50",
-		image: "https://picsum.photos/300/300?random=3",
-	},
-	{
-		name: "Mango Slush",
-		price: "$6.00",
-		image: "https://picsum.photos/300/300?random=4",
-	},
-	{
-		name: "Lychee Green Tea",
-		price: "$5.75",
-		image: "https://picsum.photos/300/300?random=5",
-	},
-	{
-		name: "Honeydew Milk Tea",
-		price: "$5.50",
-		image: "https://picsum.photos/300/300?random=6",
-	},
-	{
-		name: "Brown Sugar Milk Tea",
-		price: "$5.50",
-		image: "https://picsum.photos/300/300?random=1",
-	},
-	{
-		name: "Taro Smoothie",
-		price: "$6.00",
-		image: "https://picsum.photos/300/300?random=2",
-	},
-	{
-		name: "Strawberry Matcha Latte",
-		price: "$6.50",
-		image: "https://picsum.photos/300/300?random=3",
-	},
-	{
-		name: "Mango Slush",
-		price: "$6.00",
-		image: "https://picsum.photos/300/300?random=4",
-	},
-	{
-		name: "Lychee Green Tea",
-		price: "$5.75",
-		image: "https://picsum.photos/300/300?random=5",
-	},
-	{
-		name: "Honeydew Milk Tea",
-		price: "$5.50",
-		image: "https://picsum.photos/300/300?random=6",
-	},
-];
+import { useEffect, useState } from "react";
+import { client, urlFor } from "../../sanityClient";
+import { Link } from "react-router-dom";
 
 export default function FanFavorites() {
+	const [drinks, setDrinks] = useState([]);
+
+	useEffect(() => {
+		const fetchDrinks = async () => {
+			const data = await client.fetch(`
+        *[_type == "menuCategory"]{
+          items[featured == true]{
+            name,
+            image,
+            description,
+            sizes[]{ label, price },
+            addons[]{ name, price },
+            featuredOrder
+          }
+        }
+      `);
+
+			const allItems = data.flatMap((cat) => cat.items);
+			const sorted = allItems.sort(
+				(a, b) => (a.featuredOrder ?? 0) - (b.featuredOrder ?? 0)
+			);
+			setDrinks(sorted);
+		};
+
+		fetchDrinks();
+	}, []);
+
 	return (
-		<section className="py-16 bg-[#fefefe]">
-			<h2 className="text-3xl font-bold text-center text-[#91C3B0] mb-10">
-				Fan Favorites
-			</h2>
+		<section className="py-24 bg-[#fefefe]">
+			<div className="max-w-6xl mx-auto px-6">
+				<div className="mb-20">
+					<h2 className="text-4xl md:text-5xl font-bold text-left text-[#91C3B0] mb-4">
+						Fan Favorites
+					</h2>
+					<p className="text-gray-600 text-lg md:text-xl">
+						These are some of our most-loved drinks, handpicked by our loyal customers.
+					</p>
+				</div>
+			</div>
+
 			<div className="overflow-x-auto scroll-smooth scrollbar-hide">
-				<div className="flex gap-4 min-w-max px-4">
-					{featuredDrinks.map((drink, index) => (
-						<div
+				<div className="flex gap-6 min-w-max px-6 pb-6">
+					{drinks.map((drink, index) => (
+						<Link
+							to={`/drink/${encodeURIComponent(drink.name)}`}
 							key={index}
-							className="w-60 flex-shrink-0 bg-white rounded-2xl overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-lg"
+							className="w-52 md:w-56 flex-shrink-0 bg-white overflow-hidden transform transition duration-300 hover:scale-105 rounded-lg "
 						>
-							<div className="relative">
-								<img
-									src={drink.image}
-									alt={drink.name}
-									className="w-full h-64 object-cover"
-									loading="lazy"
-								/>
-								<button
-									onClick={() => alert(`Added ${drink.name} to cart`)}
-									className="absolute top-4 right-4 bg-transparent border border-white text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold hover:bg-[#F28B8B] hover:text-white transition"
-								>
-									+
-								</button>
+							<div className="relative w-full h-72 md:h-80">
+								{drink.image ? (
+									<img
+										src={urlFor(drink.image).width(300).height(420).url()}
+										alt={drink.name}
+										className="w-full h-full object-cover"
+										loading="lazy"
+									/>
+								) : (
+									<div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
+										No image
+									</div>
+								)}
+
+								{drink.description && (
+									<div className="absolute bottom-0 left-0 right-0 bg-[#fefefe]/90 backdrop-blur-sm p-3 text-sm text-[#555] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+										{drink.description}
+									</div>
+								)}
 							</div>
-							<div className="p-3 text-left">
-								<h3 className="text-sm font-bold text-[#906249]">
-									{drink.name}
-								</h3>
-								<p className="text-[#F28B8B] font-semibold mt-1">
-									{drink.price}
+
+							<div className="p-4 text-left space-y-1">
+								<h3 className="text-sm font-bold text-[#906249]">{drink.name}</h3>
+								<p className="text-[#F28B8B] font-semibold">
+									{Array.isArray(drink.sizes) && drink.sizes.length > 0
+										? `$${Number(drink.sizes[0].price).toFixed(2)}`
+										: "—"}
 								</p>
 							</div>
-						</div>
+						</Link>
 					))}
 				</div>
 			</div>
