@@ -47,8 +47,8 @@ export default function ProductSelector() {
       </div>
 
       {/* RIGHT IMAGE BOX */}
-      <div className="flex-1 flex justify-end">
-        <div className="w-full sm:w-[450px] h-[600px] bg-[#906249] overflow-hidden relative rounded-lg shadow">
+      <div className="w-full flex justify-center sm:justify-end">
+        <div className="w-full max-w-[450px] h-[300px] sm:h-[600px] mx-auto sm:mx-0 bg-[#906249] overflow-hidden relative rounded-lg shadow">
           {(productImages[hovered] || []).map((src, idx) => (
             <img
               key={idx}
