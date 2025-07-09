@@ -5,9 +5,12 @@ export default function AboutUs() {
     <section className="flex flex-col md:flex-row items-start gap-14 max-w-6xl mx-auto px-6 py-20">
       {/* LEFT TEXT */}
       <div className="md:w-1/2 space-y-8">
+        <div id="our-story" className="scroll-mt-32">
+
         <h1 className="text-4xl md:text-5xl font-bold text-[#91C3B0]">
           Our Story
         </h1>
+        </div>
 
         <p className="text-base md:text-lg leading-relaxed text-gray-700">
           Bobalei was built on a simple vision — to serve and connect{" "}

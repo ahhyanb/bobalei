@@ -6,16 +6,7 @@ export default function Menu() {
   const [menu, setMenu] = useState([]);
   const [openAddOns, setOpenAddOns] = useState({});
   const [activeCategory, setActiveCategory] = useState(null);
-
   const location = useLocation();
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const initialCategory = params.get("category");
-    if (initialCategory) {
-      setActiveCategory(initialCategory);
-    }
-  }, [location.search]);
 
   useEffect(() => {
     client
@@ -37,13 +28,36 @@ export default function Menu() {
       .catch(console.error);
   }, []);
 
+  // Scroll to section when there's a # in the URL (after Sanity fetch completes)
+  useEffect(() => {
+    if (menu.length > 0 && location.hash) {
+      const id = location.hash.slice(1);
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 300);
+      }
+    }
+  }, [location.hash, menu]);
+
   const toggleAddOns = (itemKey, e) => {
-    e.preventDefault(); // Prevents navigation when clicking +/-
+    e.preventDefault();
     setOpenAddOns((prev) => ({
       ...prev,
       [itemKey]: !prev[itemKey],
     }));
   };
+
+const slugify = (str) =>
+  str
+    .toLowerCase()
+    .replace(/\s*-\s*/g, "-")         // clean up spaced dashes first
+    .replace(/\s+/g, "-")             // replace other spaces with dash
+    .replace(/[^\w\-]+/g, "")         // remove special characters
+    .replace(/-+/g, "-")              // collapse multiple dashes
+    .trim();
+
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
@@ -76,70 +90,74 @@ export default function Menu() {
 
         {/* Main content */}
         <main className="sm:w-3/4">
+          <div id="all" className="scroll-mt-32" />
           {menu
             .filter((cat) => !activeCategory || cat.category === activeCategory)
-            .map((cat, i) => (
-              <div key={i} className="mb-20">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#91C3B0] mb-6 mt-4">
-                  {cat.category}
-                </h2>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {cat.items.map((item, j) => {
-                    const itemKey = `${cat.category}-${j}`;
-                    return (
-                      <Link
-                        to={`/drink/${encodeURIComponent(item.name)}`}
-                        key={j}
-                        className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition block"
-                      >
-                        <div className="relative">
-                          {item.imageUrl && (
-                            <img
-                              src={`${item.imageUrl}?w=400`}
-                              alt={item.name}
-                              className="w-full h-48 object-cover rounded"
-                              loading="lazy"
-                            />
-                          )}
+            .map((cat, i) => {
+              const categoryId = slugify(cat.category);
+              return (
+                <div key={i} id={categoryId} className="mb-20 scroll-mt-32">
+                  <h2 className="text-3xl md:text-4xl font-bold text-[#91C3B0] mb-6 mt-4">
+                    {cat.category}
+                  </h2>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {cat.items.map((item, j) => {
+                      const itemKey = `${cat.category}-${j}`;
+                      return (
+                        <Link
+                          to={`/drink/${encodeURIComponent(item.name)}`}
+                          key={j}
+                          className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition block"
+                        >
+                          <div className="relative">
+                            {item.imageUrl && (
+                              <img
+                                src={`${item.imageUrl}?w=400`}
+                                alt={item.name}
+                                className="w-full h-48 object-cover rounded"
+                                loading="lazy"
+                              />
+                            )}
 
-                          {item.addons?.length > 0 && (
-                            <button
-                              onClick={(e) => toggleAddOns(itemKey, e)}
-                              className="absolute bottom-2 right-2 bg-[#F28B8B]/70 text-white text-xs px-3 py-1 rounded-full hover:bg-[#F28B8B] transition shadow"
-                            >
-                              {openAddOns[itemKey] ? "−" : "+"}
-                            </button>
-                          )}
-                        </div>
-
-                        <h3 className="text-lg font-bold text-[#906249] mt-3">{item.name}</h3>
-                        <p className="text-sm text-gray-500">{item.description}</p>
-
-                        {item.sizes?.length > 0 && (
-                          <div className="mt-2 text-[#F28B8B] font-semibold text-sm">
-                            {item.sizes.map((s, k) => (
-                              <div key={k}>
-                                {s.label} | ${Number(s.price).toFixed(2)}
-                              </div>
-                            ))}
+                            {item.addons?.length > 0 && (
+                              <button
+                                onClick={(e) => toggleAddOns(itemKey, e)}
+                                className="absolute bottom-2 right-2 bg-[#F28B8B]/70 text-white text-xs px-3 py-1 rounded-full hover:bg-[#F28B8B] transition shadow"
+                              >
+                                {openAddOns[itemKey] ? "−" : "+"}
+                              </button>
+                            )}
                           </div>
-                        )}
 
-                        {openAddOns[itemKey] && (
-                          <ul className="list-disc list-inside text-sm text-gray-500 mt-3">
-                            {item.addons.map((addon, idx) => (
-                              <li key={idx}>
-                                {addon.name} – ${Number(addon.price).toFixed(2)}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </Link>
-                    );
-                  })}
+                          <h3 className="text-lg font-bold text-[#906249] mt-3">{item.name}</h3>
+                          <p className="text-sm text-gray-500">{item.description}</p>
+
+                          {item.sizes?.length > 0 && (
+                            <div className="mt-2 text-[#F28B8B] font-semibold text-sm">
+                              {item.sizes.map((s, k) => (
+                                <div key={k}>
+                                  {s.label} | ${Number(s.price).toFixed(2)}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+
+                          {openAddOns[itemKey] && (
+                            <ul className="list-disc list-inside text-sm text-gray-500 mt-3">
+                              {item.addons.map((addon, idx) => (
+                                <li key={idx}>
+                                  {addon.name} – ${Number(addon.price).toFixed(2)}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
         </main>
       </div>
     </div>
