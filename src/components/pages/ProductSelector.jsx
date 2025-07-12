@@ -28,6 +28,16 @@ export default function ProductSelector() {
     return () => clearInterval(timer);
   }, [hovered]);
 
+  // Slugify function to match Menu section IDs
+  const slugify = (str) =>
+    str
+      .toLowerCase()
+      .replace(/\s*-\s*/g, "-")
+      .replace(/\s+/g, "-")
+      .replace(/[^\w\-]+/g, "")
+      .replace(/-+/g, "-")
+      .trim();
+
   return (
     <section className="flex flex-col sm:flex-row items-start gap-8 max-w-6xl mx-auto p-8">
       {/* LEFT SELECTION */}
@@ -36,7 +46,7 @@ export default function ProductSelector() {
           <div
             key={item}
             onMouseEnter={() => setHovered(item)}
-            onClick={() => navigate(`/menu?category=${encodeURIComponent(item)}`)}
+            onClick={() => navigate(`/menu#${slugify(item)}`)}
             className={`cursor-pointer transition ${
               hovered === item ? "text-[#F28B8B] underline decoration-2" : ""
             }`}

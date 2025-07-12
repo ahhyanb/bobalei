@@ -1,51 +1,54 @@
-import React, { useEffect, useState } from "react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-const Hero = () => {
-  const [loaded, setLoaded] = useState(false);
+export default function Hero() {
+  const ref = useRef(null);
 
-  useEffect(() => {
-    // Trigger the animation when component mounts
-    setLoaded(true);
-  }, []);
+  // Get scroll progress from 0 (start of hero) to 1 (end of hero)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end end"],
+  });
 
-  const orderLink =
-    "https://order.online/store/bobalei-wailuku-30956807/?hideModal=true&pickup=true&rwg_token=ACgRB3fu7JRiqHebuSoEMiP4dfIA4vd8Zx7g0SBwI1zDaSG8bsNtvulDM3yB513nu7mtn1qnwUnlNmwA5ZNE2hhkhLZuQH4uzQ==&utm_source=gfo";
+  // Move image up slightly as user scrolls through hero
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, 50]);
+  const textOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.6]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+
+
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#91C3B0]/50 via-[#F28B8B]/30 to-[#fffdfc]">
-      {/* Main content */}
-      <div
-        className={`relative z-10 max-w-6xl mx-auto h-full flex flex-col-reverse md:flex-row items-center justify-center gap-10 px-4 transition-all duration-1000 ease-out ${
-          loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`}
+    <>
+      {/* HERO SECTION (must be tall to enable scroll) */}
+      <section
+        ref={ref}
+        className="h-[200vh] bg-gradient-to-br from-[#91C3B0]/50 via-[#F28B8B]/30 to-[#fffdfc] relative"
       >
-        <div className="text-center md:text-left">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white font-comfortaa leading-tight drop-shadow-lg">
-            Summer Bowl
-            <br />
-            <span className="text-[#F28B8B]">Fresh, Fruity, $15</span>
-          </h1>
-          <p className="mt-4 text-white/90 max-w-md mx-auto md:mx-0 drop-shadow">
-            Acai base, almond milk, granola, and seasonal fruits in a dreamy blend.
-          </p>
-          <a
-            href={orderLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-6 bg-[#F28B8B] text-white px-6 py-3 rounded-full hover:bg-[#e07171] transition font-medium shadow-lg"
-          >
-            Order Now
-          </a>
+        <div className="sticky top-0 h-screen flex flex-col md:flex-row items-center justify-center gap-10 px-6">
+          {/* TEXT BLOCK */}
+          <motion.div style={{ y: textY, opacity: textOpacity }}>
+            <h1 className="text-4xl font-bold text-[#906249] text-center md:text-left mt-8">
+              Summer Bowl
+              <br />
+              <span className="text-[#F28B8B]">Fresh & Fruity</span>
+            </h1>
+            <p className="mt-4 text-gray-700 max-w-md text-center md:text-left">
+              Acai base, almond milk, granola, and seasonal fruits in a dreamy blend.
+            </p>
+          </motion.div>
+
+          {/* IMAGE BLOCK */}
+          <motion.img
+            src="/main-image.png"
+            alt="Summer Bowl"
+            className="object-cover w-[600px] h-[700px]"
+            style={{ y: imageY, scale: imageScale}}
+          />
         </div>
+      </section>
 
-        <img
-          src="/main-image.png"
-          alt="Summer Bowl"
-          className="w-[400px] md:w-[620px] object-contain drop-shadow-2xl"
-        />
-      </div>
-    </section>
+      
+    </>
   );
-};
-
-export default Hero;
+}
