@@ -9,21 +9,29 @@ export default function FanFavorites() {
 		const fetchDrinks = async () => {
 			const data = await client.fetch(`
         *[_type == "menuCategory"]{
+          category,
           items[featured == true]{
             name,
             image,
             description,
-            sizes[]{ label, price },
-            addons[]{ name, price },
             featuredOrder
           }
         }
       `);
 
-			const allItems = data.flatMap((cat) => cat.items);
+			// Flatten items and attach category name
+			const allItems = data.flatMap((cat) =>
+				cat.items.map((item) => ({
+					...item,
+					category: cat.category,
+				}))
+			);
+
+			// Sort by featuredOrder
 			const sorted = allItems.sort(
 				(a, b) => (a.featuredOrder ?? 0) - (b.featuredOrder ?? 0)
 			);
+
 			setDrinks(sorted);
 		};
 
@@ -49,7 +57,7 @@ export default function FanFavorites() {
 						<Link
 							to={`/drink/${encodeURIComponent(drink.name)}`}
 							key={index}
-							className="w-52 md:w-56 flex-shrink-0 bg-white overflow-hidden transform transition duration-300 hover:scale-105 rounded-lg "
+							className="w-52 md:w-56 flex-shrink-0 bg-white overflow-hidden transform transition duration-300 hover:scale-105 rounded-lg"
 						>
 							<div className="relative w-full h-72 md:h-80">
 								{drink.image ? (
@@ -64,21 +72,11 @@ export default function FanFavorites() {
 										No image
 									</div>
 								)}
-
-								{drink.description && (
-									<div className="absolute bottom-0 left-0 right-0 bg-[#fefefe]/90 backdrop-blur-sm p-3 text-sm text-[#555] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-										{drink.description}
-									</div>
-								)}
 							</div>
 
 							<div className="p-4 text-left space-y-1">
 								<h3 className="text-sm font-bold text-[#906249]">{drink.name}</h3>
-								<p className="text-[#F28B8B] font-semibold">
-									{Array.isArray(drink.sizes) && drink.sizes.length > 0
-										? `$${Number(drink.sizes[0].price).toFixed(2)}`
-										: "—"}
-								</p>
+								<p className="text-xs text-gray-500">{drink.category}</p>
 							</div>
 						</Link>
 					))}
