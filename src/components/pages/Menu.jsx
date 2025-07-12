@@ -139,15 +139,11 @@ export default function Menu() {
 														{item.description}
 													</p>
 
-													{item.sizes?.some((s) => s.price) && (
+													{item.sizes?.length > 0 && (
 														<div className="mt-2 text-[#F28B8B] font-semibold text-sm">
-															{item.sizes
-																.filter((s) => s.price)
-																.map((s, k) => (
-																	<div key={k}>
-																		{s.label} | ${Number(s.price).toFixed(2)}
-																	</div>
-																))}
+															{item.sizes.map((s, k) => (
+																<div key={k}>{s.label}</div>
+															))}
 														</div>
 													)}
 
