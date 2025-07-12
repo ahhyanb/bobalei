@@ -61,57 +61,81 @@ export default function Menu() {
 	return (
 		<div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
 			<div className="flex flex-col sm:flex-row gap-8">
-				{/* Sidebar filters */}
-				<aside className="sm:w-1/4 sticky top-28 self-start">
-					<h3 className="font-bold text-[#906249] mb-4 text-lg">
-						Filter by Category
-					</h3>
-					<button
-						onClick={() => setActiveCategory(null)}
-						className={`block w-full text-left mb-2 font-medium ${
-							activeCategory === null
-								? "text-[#F28B8B]"
-								: "text-gray-700 hover:text-[#7eb5a3]"
-						}`}
-					>
-						All
-					</button>
-					{menu.map((cat, idx) => (
-						<button
-							key={idx}
-							onClick={() => setActiveCategory(cat.category)}
-							className={`block w-full text-left mb-2 text-sm ${
-								activeCategory === cat.category
-									? "text-[#F28B8B] font-semibold"
-									: "text-gray-700 hover:text-[#7eb5a3]"
-							}`}
-						>
-							{cat.category}
-						</button>
-					))}
-				</aside>
+	{/* Sidebar for desktop */}
+	<aside className="hidden sm:block sm:w-1/4 sticky top-28 self-start">
+		<h3 className="font-bold text-[#906249] mb-4 text-lg">
+			Filter by Category
+		</h3>
+		<button
+			onClick={() => setActiveCategory(null)}
+			className={`block w-full text-left mb-2 font-medium ${
+				activeCategory === null
+					? "text-[#F28B8B]"
+					: "text-gray-700 hover:text-[#7eb5a3]"
+			}`}
+		>
+			All
+		</button>
+		{menu.map((cat, idx) => (
+			<button
+				key={idx}
+				onClick={() => setActiveCategory(cat.category)}
+				className={`block w-full text-left mb-2 text-sm ${
+					activeCategory === cat.category
+						? "text-[#F28B8B] font-semibold"
+						: "text-gray-700 hover:text-[#7eb5a3]"
+				}`}
+			>
+				{cat.category}
+			</button>
+		))}
+	</aside>
 
-				{/* Main content */}
-				<main className="sm:w-3/4">
-					<div id="all" className="scroll-mt-32" />
-					{menu
-						.filter((cat) => !activeCategory || cat.category === activeCategory)
-						.map((cat, i) => {
-							const categoryId = slugify(cat.category);
-							return (
-								<div key={i} id={categoryId} className="mb-20 scroll-mt-32">
-									<h2 className="text-3xl md:text-4xl font-bold text-[#91C3B0] mb-6 mt-4">
-										{cat.category}
-									</h2>
-									<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-										{cat.items.map((item, j) => {
-											const itemKey = `${cat.category}-${j}`;
-											return (
-												<Link
-													to={`/drink/${encodeURIComponent(item.name)}`}
-													key={j}
-													className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition block"
-												>
+	{/* Main content (mobile dropdown goes here) */}
+	<main className="w-full sm:w-3/4">
+		{/* Mobile Dropdown */}
+		<div className="block sm:hidden mb-6">
+			<label className="block text-[#906249] font-bold mb-2">
+				Filter by Category
+			</label>
+			<select
+				onChange={(e) =>
+					setActiveCategory(
+						e.target.value === "All" ? null : e.target.value
+					)
+				}
+				value={activeCategory || "All"}
+				className="w-full border border-gray-300 rounded px-3 py-2"
+			>
+				<option>All</option>
+				{menu.map((cat, idx) => (
+					<option key={idx} value={cat.category}>
+						{cat.category}
+					</option>
+				))}
+			</select>
+		</div>
+
+		{/* Menu sections */}
+		<div id="all" className="scroll-mt-32" />
+		{menu
+			.filter((cat) => !activeCategory || cat.category === activeCategory)
+			.map((cat, i) => {
+				const categoryId = slugify(cat.category);
+				return (
+					<div key={i} id={categoryId} className="mb-20 scroll-mt-32">
+						<h2 className="text-3xl md:text-4xl font-bold text-[#91C3B0] mb-6 mt-4">
+							{cat.category}
+						</h2>
+						<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+							{cat.items.map((item, j) => {
+								const itemKey = `${cat.category}-${j}`;
+								return (
+									<Link
+										to={`/drink/${encodeURIComponent(item.name)}`}
+										key={j}
+										className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition block"
+									>
 													<div className="relative">
 														{item.imageUrl && (
 															<img
