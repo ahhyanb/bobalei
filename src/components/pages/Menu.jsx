@@ -62,7 +62,7 @@ export default function Menu() {
 		<div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
 			<div className="flex flex-col sm:flex-row gap-8">
 				{/* Sidebar filters */}
-				<aside className="sm:w-1/4">
+				<aside className="sm:w-1/4 sticky top-28 self-start">
 					<h3 className="font-bold text-[#906249] mb-4 text-lg">
 						Filter by Category
 					</h3>
