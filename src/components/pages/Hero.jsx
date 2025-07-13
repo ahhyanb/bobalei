@@ -10,7 +10,7 @@ export default function Hero() {
     offset: ["start start", "end end"],
   });
 
-  // Move image up slightly as user scrolls through hero
+  // animations
   const imageY = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const textY = useTransform(scrollYProgress, [0, 1], [0, 50]);
   const textOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.6]);
