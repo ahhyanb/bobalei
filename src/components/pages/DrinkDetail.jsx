@@ -17,8 +17,8 @@ export default function DrinkDetail() {
             description,
             image,
             "imageUrl": image.asset->url,
-            sizes[]{ label, price },
-            addons[]{ name, price }
+            sizes[]{ label },
+            addons[]{ name }
           }
         }
       `;
@@ -71,9 +71,7 @@ export default function DrinkDetail() {
           {drink.sizes?.length > 0 && (
             <div className="text-[#F28B8B] font-semibold space-y-1 mb-4">
               {drink.sizes.map((s, i) => (
-                <div key={i}>
-                  {s.label} | ${Number(s.price).toFixed(2)}
-                </div>
+                <div key={i}>{s.label}</div>
               ))}
             </div>
           )}
@@ -83,9 +81,7 @@ export default function DrinkDetail() {
               <p className="font-semibold mb-1">Available Add-ons:</p>
               <ul className="list-disc list-inside">
                 {drink.addons.map((a, i) => (
-                  <li key={i}>
-                    {a.name} - ${Number(a.price).toFixed(2)}
-                  </li>
+                  <li key={i}>{a.name}</li>
                 ))}
               </ul>
             </div>
