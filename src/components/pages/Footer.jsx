@@ -33,7 +33,7 @@ export default function Footer() {
             <div className="flex items-center gap-2">
               <FaEnvelope />
               <a
-                href="mailto:hello@bobalei.com"
+                href="mailto:inquiry@bobaleillc.com"
                 className="hover:text-[#F28B8B] transition"
               >
                 inquiry@bobaleillc.com
