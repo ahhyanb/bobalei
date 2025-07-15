@@ -29,7 +29,7 @@ export default function Support() {
                   href="mailto:support@bobalei.com"
                   className="text-[#906249] underline"
                 >
-                  support@bobalei.com
+                  inquiry@bobaleillc.com
                 </a>
               </p>
             </div>

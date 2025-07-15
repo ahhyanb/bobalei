@@ -30,7 +30,7 @@ export default function Location() {
               href="mailto:hello@bobalei.com"
               className="text-sm text-[#91C3B0] underline hover:text-[#7eb5a3]"
             >
-              inquir@bobaleillc.com
+              inquiry@bobaleillc.com
             </a>
           </div>
 
