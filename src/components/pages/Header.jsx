@@ -8,11 +8,11 @@ const menuLinks = [
 	{ name: "Milk Teas", href: "/menu#milk-teas" },
 	{ name: "Specialty Blend", href: "/menu#specialty-blend" },
 	{ name: "Coffee", href: "/menu#coffee" },
-	{ name: "Frappe", href: "/menu#frappe" },
 	{ name: "Refreshers - Fruit Teas", href: "/menu#refreshers-fruit-teas" },
 	{ name: "Fizz - Lemonade", href: "/menu#fizz-lemonade" },
 	{ name: "Bowls", href: "/menu#bowls" },
 	{ name: "Daily Grindz", href: "/menu#daily-grindz" },
+	{ name: "Protein Smoothie", href: "/menu#protein-smoothie" },
 ];
 
 const aboutLinks = [
@@ -67,12 +67,11 @@ export default function Header() {
 				<div className="relative flex justify-center items-center">
 					{/* Desktop Nav */}
 					<nav className="hidden sm:flex space-x-6 text-sm font-medium absolute left-0 text-[#7eb5a3]">
-						<Link 
-              to="/" 
-              className="hover:text-[#F28B8B]"
-              onMouseEnter={() => setSubmenu(null)}
-              
-              >
+						<Link
+							to="/"
+							className="hover:text-[#F28B8B]"
+							onMouseEnter={() => setSubmenu(null)}
+						>
 							Home
 						</Link>
 
