@@ -9,7 +9,6 @@ const menuLinks = [
 	{ name: "Specialty Blend", href: "/menu#specialty-blend" },
 	{ name: "Coffee", href: "/menu#coffee" },
 	{ name: "Refreshers - Fruit Teas", href: "/menu#refreshers-fruit-teas" },
-	{ name: "Fizz - Lemonade", href: "/menu#fizz-lemonade" },
 	{ name: "Bowls", href: "/menu#bowls" },
 	{ name: "Daily Grindz", href: "/menu#daily-grindz" },
 	{ name: "Protein Smoothie", href: "/menu#protein-smoothie" },
