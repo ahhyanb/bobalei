@@ -62,7 +62,7 @@ export default function Menu() {
 		<div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
 			<div className="flex flex-col sm:flex-row gap-8">
 	{/* Sidebar for desktop */}
-	<aside className="hidden sm:block sm:w-1/4 sticky top-28 self-start">
+	<aside className="hidden sm:block sm:w-1/4 sticky top-32 self-start mt-16">
 		<h3 className="font-bold text-[#906249] mb-4 text-lg">
 			Filter by Category
 		</h3>
