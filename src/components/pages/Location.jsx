@@ -21,7 +21,7 @@ export default function Location() {
 
           <div className="flex items-center gap-3 text-[#7E5C49]">
             <FaPhoneAlt />
-            <p className="text-sm">(808) 123-4567</p>
+            <p className="text-sm">(808) 318-3107</p>
           </div>
 
           <div className="flex items-center gap-3 text-[#7E5C49]">
@@ -30,7 +30,7 @@ export default function Location() {
               href="mailto:hello@bobalei.com"
               className="text-sm text-[#91C3B0] underline hover:text-[#7eb5a3]"
             >
-              hello@bobalei.com
+              inquir@bobaleillc.com
             </a>
           </div>
 
