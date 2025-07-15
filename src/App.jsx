@@ -7,6 +7,7 @@ import Location from "./components/pages/Location";
 import About from "./components/pages/About";
 import Support from "./components/pages/Support";
 import DrinkDetail from "./components/pages/DrinkDetail";
+import Shop from "./components/pages/Shop";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/support" element={<Support />} />
           <Route path="/drink/:drinkName" element={<DrinkDetail />} />
+          <Route path="/shop" element={<Shop />} />
           {/* Add other routes as needed */}
         </Routes>
       </div>

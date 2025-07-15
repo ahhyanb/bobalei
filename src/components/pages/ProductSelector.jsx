@@ -39,6 +39,8 @@ export default function ProductSelector() {
       .trim();
 
   return (
+    <>
+    
     <section className="flex flex-col sm:flex-row items-start gap-8 max-w-6xl mx-auto p-8">
       {/* LEFT SELECTION */}
       <div className="flex flex-col space-y-4 text-3xl font-bold text-[#906249] flex-shrink-0">
@@ -58,7 +60,7 @@ export default function ProductSelector() {
 
       {/* RIGHT IMAGE BOX */}
       <div className="w-full flex justify-center sm:justify-end">
-        <div className="w-full max-w-[450px] h-[300px] sm:h-[600px] mx-auto sm:mx-0 bg-[#906249] overflow-hidden relative rounded-lg shadow">
+        <div className="w-full max-w-[450px] h-[300px] sm:h-[600px] mx-auto sm:mx-0 bg-[#906249] overflow-hidden relative rounded-lg shadow transition-transform duration-300 hover:scale-105">
           {(productImages[hovered] || []).map((src, idx) => (
             <img
               key={idx}
@@ -72,5 +74,6 @@ export default function ProductSelector() {
         </div>
       </div>
     </section>
+    </>
   );
 }

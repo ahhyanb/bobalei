@@ -21,6 +21,13 @@ export default function Hero() {
   return (
     <>
       {/* HERO SECTION (must be tall to enable scroll) */}
+
+      <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true }}
+				transition={{ duration: 0.8 }}
+      >
       <section
         ref={ref}
         className="h-[200vh] bg-gradient-to-br from-[#91C3B0]/50 via-[#F28B8B]/30 to-[#fffdfc] relative"
@@ -47,6 +54,7 @@ export default function Hero() {
           />
         </div>
       </section>
+      </motion.div>
 
       
     </>

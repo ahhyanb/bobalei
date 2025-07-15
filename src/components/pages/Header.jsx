@@ -20,6 +20,13 @@ const aboutLinks = [
 	{ name: "Support", href: "/support" },
 ];
 
+const shopLinks = [
+	{ name: "Bobalei Merch", href: "/shop#bobalei-merch"},
+	{ name: "T-shirts", href: "/shop#tshirt"},
+	{ name: "Hoodies", href: "/shop#hoodies"},
+	{ name: "Accesories", href: "/shop#accesories"},
+]
+
 const orderLink =
 	"https://order.online/store/bobalei-wailuku-30956807/?hideModal=true&pickup=true";
 
@@ -89,6 +96,14 @@ export default function Header() {
 						>
 							About Us
 						</Link>
+
+						<Link
+							to="/merchandise"
+							className="hover:text-[#F28B8B]"
+							onMouseEnter={() => setSubmenu("merchandise")}
+						>
+							Shop
+						</Link>
 					</nav>
 
 					{/* Mobile hamburger */}
@@ -105,7 +120,7 @@ export default function Header() {
 
 					{/* Center logo */}
 					<Link to="/">
-						<img src="/logo.png" alt="Bobalei logo" className="h-20" />
+						<img src="/logo.png" alt="Bobalei logo" className="h-20 transition-transform duration-300 hover:scale-105" />
 					</Link>
 
 					{/* Desktop "Order Now" */}
@@ -120,21 +135,29 @@ export default function Header() {
 				</div>
 
 				{/* Desktop submenu */}
-				{submenu && (
-					<div className="hidden sm:flex mt-2 mb-6">
-						<div className="flex flex-col">
-							{(submenu === "menu" ? menuLinks : aboutLinks).map((link) => (
-								<button
-									key={link.href}
-									onClick={() => handleMenuLinkClick(link.href)}
-									className="text-left text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
-								>
-									{link.name}
-								</button>
-							))}
-						</div>
-					</div>
-				)}
+{submenu && (
+	<div className="hidden sm:flex mt-2 mb-6">
+		<div className="flex flex-col">
+			{(submenu === "menu"
+				? menuLinks
+				: submenu === "about"
+				? aboutLinks
+				: submenu === "merchandise"
+				? shopLinks // you can replace with merchLinks if you create that later
+				: []
+			).map((link) => (
+				<button
+					key={link.href}
+					onClick={() => handleMenuLinkClick(link.href)}
+					className="text-left text-sm text-gray-700 py-1 hover:text-[#F28B8B]"
+				>
+					{link.name}
+				</button>
+			))}
+		</div>
+	</div>
+)}
+
 
 				{/* Mobile Menu */}
 				{isMobileMenuOpen && (
