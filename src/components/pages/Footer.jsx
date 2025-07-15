@@ -36,12 +36,12 @@ export default function Footer() {
                 href="mailto:hello@bobalei.com"
                 className="hover:text-[#F28B8B] transition"
               >
-                hello@bobalei.com
+                inquiry@bobaleillc.com
               </a>
             </div>
             <div className="flex items-center gap-2">
               <FaPhoneAlt />
-              <span>(808) 123-4567</span>
+              <span>(808) 318-3107</span>
             </div>
             <div className="flex gap-4 mt-2">
               <a
