@@ -14,7 +14,7 @@ export default function Home() {
         <Hero />
         <WhyBobalei />
         <ProductSelector />
-        <FanFavorites />  {/* ✅ clean and modular */}
+        <FanFavorites />  
       </main>
   
     

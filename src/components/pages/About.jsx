@@ -13,7 +13,7 @@ export default function AboutUs() {
         </div>
 
         <p className="text-base md:text-lg leading-relaxed text-gray-700">
-          Bobalei was built on a simple vision — to serve and connect{" "}
+          Bobalei was built on a vision to serve and connect{" "}
           <span className="text-[#F28B8B] font-semibold">
             our community through boba
           </span>.
@@ -22,21 +22,21 @@ export default function AboutUs() {
         <p className="text-base md:text-lg leading-relaxed text-gray-700">
           OGs may remember the iconic{" "}
           <span className="font-medium">vibrant pink horse trailer</span> that
-          started it all. Back then, we were just a small team working
-          tirelessly to create a fully functioning mobile kitchen — something
-          that felt just as fun as it was functional.
+          started it all. Back then, we were a small team working
+          tirelessly to create a fully functioning mobile kitchen something
+          that felt as fun as it was functional.
         </p>
 
         <p className="text-base md:text-lg leading-relaxed text-gray-700">
           We opened our first truck in <span className="font-medium">Kihei</span>,
           bringing handcrafted milk teas, smoothies, and good vibes to locals
           and visitors alike. The response was incredible.
-        </p>
+        </p> 
 
         <p className="text-base md:text-lg leading-relaxed text-gray-700">
-          As demand grew, so did we. We expanded to a larger food truck to
+          As demand grew, so did we. We now escaled to a larger food truck to
           serve more guests and added delicious food options alongside our
-          drinks. From those humble beginnings, Bobalei has continued to grow
+          drinks. From our humble beginnings, Bobalei has continued to grow
           with our community — one cup, one bowl, one smile at a time.
         </p>
       </div>

@@ -37,7 +37,7 @@ export default function Location() {
           <div className="mt-6">
             <h3 className="text-md font-semibold text-[#7E5C49] mb-2">Hours of Operation</h3>
             <ul className="text-sm text-[#7E5C49] leading-6">
-              <li>Monday – Saturday: 10:00am – 6:00pm</li>
+              <li>Monday – Saturday: 9:00am – 4:00pm</li>
               <li>Sunday: Closed</li>
             </ul>
           </div>
