@@ -43,7 +43,7 @@ export default function Location() {
           </div>
 
           <a
-            href="https://www.google.com/maps/place/Wailuku+Food+Trucks/@20.8883021,-156.5000491,20z"
+            href="https://www.google.com/maps/place/Bobalei/@20.8882059,-156.5035449,17z/data=!3m1!4b1!4m6!3m5!1s0x7954d3d0a3bf98df:0x5255600bfee16333!8m2!3d20.8882059!4d-156.50097!16s%2Fg%2F11x0j5n6r9?entry=ttu&g_ep=EgoyMDI1MDcxMy4wIKXMDSoASAFQAw%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block border border-[#91C3B0] text-[#91C3B0] px-6 py-2 rounded-full text-sm hover:bg-[#91C3B0] hover:text-white transition mt-8"

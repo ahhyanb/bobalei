@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function ProductSelector() {
   const productImages = {
-    "Specialty Blend": ["/smoothie.jpeg"],
+    "Smoothies": ["/smoothie.jpeg"],
     "Milk Teas": ["/boba.jpeg"],
     "Bowls": ["/acai.jpg", "/matcha.jpg"],
     "Daily Grindz": ["/food.jpeg"],

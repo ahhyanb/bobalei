@@ -40,9 +40,9 @@ export default function WhyBobalei() {
 							alt="Hawaiian Islands"
 							className="h-12 mx-auto mb-2"
 						/>
-						<h3 className="font-semibold text-lg">Hawaii-Made</h3>
+						<h3 className="font-semibold text-lg">Made in Hawaii</h3>
 						<p className="text-sm text-gray-500 mt-2">
-							Locally owned & community loved.
+							Our community through boba.
 						</p>
 					</div>
 				</div>

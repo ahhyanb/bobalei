@@ -70,7 +70,7 @@ export default function Support() {
               </p>
             </div>
 
-            <div>
+            { /*<div>
               <h2 className="flex items-center text-[#F28B8B] font-semibold text-lg mb-1">
                 <FaClock className="mr-2" />
                 Response Time
@@ -79,6 +79,7 @@ export default function Support() {
                 We typically respond within 24–48 hours during our business hours.
               </p>
             </div>
+             */}
           </div>
         </div>
 
