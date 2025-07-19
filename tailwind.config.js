@@ -9,8 +9,10 @@ export default {
     extend: {
       fontFamily: {
         comfortaa: ['Comfortaa', 'cursive'],
+        handwritten: ['"Patrick Hand"', 'cursive'],
       },
     },
+    
   },
   plugins: [],
 }

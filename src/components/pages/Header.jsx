@@ -22,10 +22,14 @@ const aboutLinks = [
 ];
 
 const shopLinks = [
+  { name: "Coming Soon", href: "/shop"},
+
+  /* coming soon
   { name: "Bobalei Merch", href: "/shop#bobalei-merch" },
   { name: "T-shirts", href: "/shop#tshirt" },
   { name: "Hoodies", href: "/shop#hoodies" },
   { name: "Accessories", href: "/shop#accesories" },
+   */
 ];
 
 const orderLink =
@@ -70,7 +74,7 @@ export default function Header() {
       ? menuLinks
       : submenu === "about"
       ? aboutLinks
-      : submenu === "merchandise"
+      : submenu === "shop"
       ? shopLinks
       : [];
 
@@ -112,9 +116,9 @@ export default function Header() {
             </Link>
 
             <Link
-              to="/merchandise"
+              to="/shop"
               className="hover:text-[#F28B8B]"
-              onMouseEnter={() => setSubmenu("merchandise")}
+              onMouseEnter={() => setSubmenu("shop")}
             >
               Shop
             </Link>
