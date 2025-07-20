@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const slides = [
   {
@@ -9,16 +9,16 @@ const slides = [
     image: "/main-image.png",
   },
   {
-    title: "Weekly Specials",
-    subtitle: "Call to Hear Today’s Menu!",
-    description: "We offer rotating specials – unique and tasty, every week.",
-    image: "/specials-image.png",
+    title: "Coconut Mocha Protein Smoothie",
+    subtitle: "Fuel Your Day",
+    description: "Coconut and chocolate blended with 25 grams of vanilla protein to keep you energized.",
+    image: "/coconut-mocha.png",
   },
   {
-    title: "Try Our Smoothies",
-    subtitle: "Cool & Creamy",
-    description: "Blended fresh with real fruit and your choice of base.",
-    image: "/smoothie-image.png",
+    title: "Bao Buns w/ Fries",
+    subtitle: "Warm & Fluffy",
+    description: "Soft steamed buns filled with savory tocino, bacon, and portuguese sausage.",
+    image: "/bao-buns-fries.png",
   },
 ];
 
@@ -29,8 +29,8 @@ export default function Hero() {
     offset: ["start start", "end end"],
   });
 
-  // Only scale image; keep text stable
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1.2, 1.6]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.3]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
 
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -48,9 +48,9 @@ export default function Hero() {
       ref={ref}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      className="h-[110vh] bg-gradient-to-br from-[#91C3B0]/50 via-[#F28B8B]/30 to-[#fffdfc] relative overflow-hidden"
+      className="relative h-[110vh] overflow-hidden bg-gradient-to-br from-[#91C3B0]/50 via-[#F28B8B]/30 to-[#fffdfc]"
     >
-      {/* LEFT ARROW */}
+      {/* Arrows */}
       <div
         onClick={() => setIndex((prev) => (prev - 1 + slides.length) % slides.length)}
         className="absolute top-0 left-0 h-full w-12 z-30 cursor-pointer group flex items-center justify-center"
@@ -61,7 +61,6 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* RIGHT ARROW */}
       <div
         onClick={() => setIndex((prev) => (prev + 1) % slides.length)}
         className="absolute top-0 right-0 h-full w-12 z-30 cursor-pointer group flex items-center justify-center"
@@ -72,10 +71,13 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* HERO CONTENT */}
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center px-4 mt-11 pointer-events-none">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6 max-w-6xl w-full pointer-events-auto px-4">
-          {/* TEXT BLOCK */}
+      {/* Glow behind image */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#F28B8B]/30 blur-3xl z-0 pointer-events-none" />
+
+      {/* Content */}
+      <div className="sticky top-0 h-screen flex items-center px-4 mt-11 pointer-events-none">
+        <div className="relative z-10 max-w-6xl w-full mx-auto flex flex-col md:flex-row items-center justify-between pointer-events-auto">
+          {/* Text */}
           <motion.div
             key={index}
             initial={{ opacity: 0, x: -30 }}
@@ -92,37 +94,37 @@ export default function Hero() {
               {slides[index].description}
             </p>
           </motion.div>
-
-          {/* IMAGE BLOCK */}
-          <motion.div
-            style={{ scale: imageScale }}
-            className="w-full md:w-1/2 flex justify-center"
-          >
-            <motion.img
-              key={index}
-              src={slides[index].image}
-              alt={slides[index].title}
-              className="object-cover max-w-[90%] max-h-[400px] md:max-w-[600px] md:max-h-[700px]"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9 }}
-            />
-          </motion.div>
         </div>
 
-        {/* DOT INDICATORS */}
-        <div className="flex gap-2 mt-6 justify-center">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setIndex(i)}
-              className={`w-3 h-3 rounded-full border ${
-                i === index ? "bg-[#906249] border-[#906249]" : "bg-transparent border-gray-400"
-              } transition-all duration-300`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
+        {/* Image */}
+        <motion.div
+          style={{ scale: imageScale, y: imageY }}
+          className="hidden md:block absolute top-0 right-0 h-full z-10"
+        >
+          <motion.img
+            key={index}
+            src={slides[index].image}
+            alt={slides[index].title}
+            className="h-full object-cover mask-image-fade-left"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9 }}
+          />
+        </motion.div>
+      </div>
+
+      {/* Dot indicators */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            className={`w-3 h-3 rounded-full border ${
+              i === index ? "bg-[#906249] border-[#906249]" : "bg-transparent border-gray-400"
+            } transition-all duration-300`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
