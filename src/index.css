@@ -5,3 +5,14 @@
 body {
   @apply font-comfortaa;
 }
+
+/* Custom utility: Fades out the LEFT side of an element */
+@layer utilities {
+  .mask-image-fade-left {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 25%);
+    mask-image: linear-gradient(to right, transparent 0%, black 25%);
+    mask-mode: match-source;
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+  }
+}
