@@ -5,19 +5,22 @@ const slides = [
   {
     title: "Summer Bowl",
     subtitle: "Fresh & Fruity",
-    description: "Acai base, almond milk, granola, and seasonal fruits in a dreamy blend.",
+    description:
+      "Acai base, almond milk, granola, and seasonal fruits in a dreamy blend.",
     image: "/main-image.png",
   },
   {
     title: "Coconut Mocha Protein Smoothie",
     subtitle: "Fuel Your Day",
-    description: "Coconut and chocolate blended with 25 grams of vanilla protein to keep you energized.",
+    description:
+      "Coconut and chocolate blended with 25 grams of vanilla protein to keep you energized.",
     image: "/coconut-mocha.png",
   },
   {
     title: "Bao Buns w/ Fries",
     subtitle: "Warm & Fluffy",
-    description: "Soft steamed buns filled with savory tocino, bacon, and portuguese sausage.",
+    description:
+      "Soft steamed buns filled with savory tocino, bacon, and portuguese sausage.",
     image: "/bao-buns-fries.png",
   },
 ];
@@ -71,21 +74,21 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* Glow behind image */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#F28B8B]/30 blur-3xl z-0 pointer-events-none" />
+      {/* Glow behind image (desktop only) */}
+      <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#F28B8B]/30 blur-3xl z-0 pointer-events-none" />
 
       {/* Content */}
-      <div className="sticky top-0 h-screen flex items-center px-4 mt-11 pointer-events-none">
-        <div className="relative z-10 max-w-6xl w-full mx-auto flex flex-col md:flex-row items-center justify-between pointer-events-auto">
+      <div className="sticky top-0 h-screen flex flex-col md:flex-row items-center px-4 mt-11 pointer-events-none">
+        <div className="relative z-10 w-full mx-auto flex flex-col items-center justify-between pointer-events-auto max-w-6xl">
           {/* Text */}
           <motion.div
             key={index}
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="w-full md:w-1/2 px-4"
+            className="w-full md:w-1/2 px-4 relative z-20"
           >
-            <h1 className="text-3xl md:text-4xl font-bold text-[#906249] text-center md:text-left mt-16">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#906249] text-center md:text-left mt-12">
               {slides[index].title}
               <br />
               <span className="text-[#F28B8B]">{slides[index].subtitle}</span>
@@ -94,23 +97,23 @@ export default function Hero() {
               {slides[index].description}
             </p>
           </motion.div>
-        </div>
 
-        {/* Image */}
-        <motion.div
-          style={{ scale: imageScale, y: imageY }}
-          className="hidden md:block absolute top-0 right-0 h-full z-10"
-        >
-          <motion.img
-            key={index}
-            src={slides[index].image}
-            alt={slides[index].title}
-            className="h-full object-cover mask-image-fade-left"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9 }}
-          />
-        </motion.div>
+          {/* Image */}
+          <motion.div
+            style={{ scale: imageScale, y: imageY }}
+            className="w-full md:w-auto z-10 mt-6 md:mt-0"
+          >
+            <motion.img
+              key={index}
+              src={slides[index].image}
+              alt={slides[index].title}
+              className="w-full h-auto object-cover md:h-full md:mask-image-fade-left"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9 }}
+            />
+          </motion.div>
+        </div>
       </div>
 
       {/* Dot indicators */}
