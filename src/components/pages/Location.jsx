@@ -25,12 +25,12 @@ export default function Location() {
           </div>
 
           {/* Location Info */}
-          <div className="space-y-6">
+          <div className="space-y-6 text-[#7E5C49]">
             <div className="flex items-start gap-4">
               <FaMapMarkerAlt className="mt-1 text-[#91C3B0]" />
               <div>
-                <h3 className="text-xl font-semibold">Wailuku Food Trucks</h3>
-                <p>
+                <h3 className="text-[#7E5C49] text-xl font-semibold">Wailuku Food Trucks</h3>
+                <p className="text-[#7E5C49]">
                   1960 Main St.<br />
                   Wailuku, HI 96793
                 </p>
