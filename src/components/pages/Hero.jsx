@@ -103,7 +103,7 @@ export default function Hero() {
 						<div className="mt-6 flex flex-wrap gap-3">
 							{/* Filled Button → DoorDash */}
 							<a
-								href="https://www.doordash.com/store/bobalei-your-store-id"
+								href="https://order.online/store/bobalei-wailuku-30956807/?hideModal=true&pickup=true"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="bg-[#F28B8B] text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-md hover:bg-[#e17878] transition"
