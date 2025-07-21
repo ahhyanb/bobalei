@@ -2,63 +2,86 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 export default function Location() {
   return (
-    <section className="bg-[#fdfcfb] px-6 py-24">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-start">
-        {/* LEFT: Info */}
-        <div className="space-y-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#91C3B0]">Location</h1>
+    <section className="bg-[#FFF7F4] py-24 px-6 md:px-12">
+      {/* Title */}
+      <div className="max-w-7xl mx-auto mb-16">
+        <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#F28B8B] to-[#91C3B0] text-transparent bg-clip-text text-left mb-2">
+          Visit Us
+        </h2>
+        <div className="w-16 h-1 bg-[#F28B8B] rounded-full" />
+      </div>
 
-          <div className="flex items-start gap-3 text-[#7E5C49]">
-            <FaMapMarkerAlt className="mt-1" />
+      {/* Main Grid */}
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+        {/* LEFT: Truck Image + Info */}
+        <div className="space-y-8 text-[#3A2E2E] text-base md:text-lg leading-loose">
+          {/* Smaller Truck Image */}
+          <div className="w-full max-w-xs rounded-xl overflow-hidden shadow-xl transform hover:scale-105 transition duration-500">
+            <img
+              src="/wailukuFoodTruck.webp"
+              alt="Bobalei food truck in Wailuku"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+
+          {/* Location Info */}
+          <div className="space-y-6">
+            <div className="flex items-start gap-4">
+              <FaMapMarkerAlt className="mt-1 text-[#91C3B0]" />
+              <div>
+                <h3 className="text-xl font-semibold">Wailuku Food Trucks</h3>
+                <p>
+                  1960 Main St.<br />
+                  Wailuku, HI 96793
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <FaPhoneAlt className="text-[#91C3B0]" />
+              <p className="text-sm">(808) 318-3107</p>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <FaEnvelope className="text-[#91C3B0]" />
+              <a
+                href="mailto:inquiry@bobaleillc.com"
+                className="text-sm text-[#91C3B0] underline hover:text-[#7eb5a3]"
+              >
+                inquiry@bobaleillc.com
+              </a>
+            </div>
+
+            {/* Hours */}
             <div>
-              <h2 className="text-xl font-semibold">Wailuku Food Trucks</h2>
-              <p className="leading-relaxed">
-                1960 Main St.<br />
-                Wailuku, HI 96793
-              </p>
+              <h4 className="text-md font-semibold text-[#7E5C49] mb-2">Hours of Operation</h4>
+              <ul className="text-sm text-[#7E5C49] leading-6">
+                <li>Monday – Saturday: 9:00am – 4:00pm</li>
+                <li>Sunday: Closed</li>
+              </ul>
             </div>
           </div>
+        </div>
 
-          <div className="flex items-center gap-3 text-[#7E5C49]">
-            <FaPhoneAlt />
-            <p className="text-sm">(808) 318-3107</p>
+        {/* RIGHT: Static Map + Button */}
+        <div className="flex flex-col items-center gap-6">
+          <div className="w-full rounded-xl overflow-hidden shadow-xl transform hover:scale-105 transition duration-500">
+            <img
+              src="/bobalei-location.png"
+              alt="Map showing Bobalei's Wailuku location"
+              className="w-full h-full object-cover"
+            />
           </div>
 
-          <div className="flex items-center gap-3 text-[#7E5C49]">
-            <FaEnvelope />
-            <a
-              href="mailto:hello@bobalei.com"
-              className="text-sm text-[#91C3B0] underline hover:text-[#7eb5a3]"
-            >
-              inquiry@bobaleillc.com
-            </a>
-          </div>
-
-          <div className="mt-6">
-            <h3 className="text-md font-semibold text-[#7E5C49] mb-2">Hours of Operation</h3>
-            <ul className="text-sm text-[#7E5C49] leading-6">
-              <li>Monday – Saturday: 9:00am – 4:00pm</li>
-              <li>Sunday: Closed</li>
-            </ul>
-          </div>
-
+          {/* Google Maps Button UNDER the map now */}
           <a
-            href="https://www.google.com/maps/place/Bobalei/@20.8882059,-156.5035449,17z/data=!3m1!4b1!4m6!3m5!1s0x7954d3d0a3bf98df:0x5255600bfee16333!8m2!3d20.8882059!4d-156.50097!16s%2Fg%2F11x0j5n6r9?entry=ttu&g_ep=EgoyMDI1MDcxMy4wIKXMDSoASAFQAw%3D%3D"
+            href="https://www.google.com/maps/place/Bobalei/@20.8882059,-156.5035449,17z/data=!3m1!4b1!4m6!3m5!1s0x7954d3d0a3bf98df:0x5255600bfee16333!8m2!3d20.8882059!4d-156.50097!16s%2Fg%2F11x0j5n6r9?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block border border-[#91C3B0] text-[#91C3B0] px-6 py-2 rounded-full text-sm hover:bg-[#91C3B0] hover:text-white transition mt-8"
+            className="inline-block border border-[#91C3B0] text-[#91C3B0] px-6 py-2 rounded-full text-sm hover:bg-[#91C3B0] hover:text-white transition"
           >
             Open in Google Maps
           </a>
-        </div>
-
-        {/* RIGHT: Static Map Image */}
-        <div className="w-full overflow-hidden rounded-lg shadow-md transform transition-transform duration-500 hover:scale-105">
-          <img
-            src="/bobalei-location.png"
-            alt="Map showing Wailuku Food Trucks location"
-            className="w-full h-full object-cover rounded-lg"
-          />
         </div>
       </div>
 
