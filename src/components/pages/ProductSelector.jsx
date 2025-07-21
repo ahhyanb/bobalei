@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 export default function ProductSelector() {
   const productImages = {
-    "Smoothies": ["/smoothie.jpeg"],
-    "Milk Teas": ["/boba.jpeg"],
-    "Bowls": ["/acai.jpg", "/matcha.jpg"],
-    "Daily Grindz": ["/food.jpeg"],
+    "Smoothies": ["/smoothie.webp"],
+    "Milk Teas": ["/boba.webp"],
+    "Bowls": ["/acai.webp", "/matcha.webp"],
+    "Daily Grindz": ["/food.webp"],
   };
 
   const categories = Object.keys(productImages);

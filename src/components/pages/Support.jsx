@@ -86,7 +86,7 @@ export default function Support() {
         {/* RIGHT IMAGE */}
         <div className="md:w-1/2">
           <img
-            src="/bobalei-sign.jpg"
+            src="/bobalei-sign.webp"
             alt="bobalei signage"
             className="rounded-xl shadow-md w-full h-[480px] object-cover transition-transform duration-300 hover:scale-105"
           />
