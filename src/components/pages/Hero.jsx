@@ -15,14 +15,14 @@ const slides = [
 		subtitle: "Fuel Your Day",
 		description:
 			"Coconut and chocolate blended with 25 grams of vanilla protein to keep you energized.",
-		image: "/coconutMocha.png",
+		image: "/coconutMocha.webp",
 	},
 	{
 		title: "Bao Buns w/ Fries",
 		subtitle: "Warm & Fluffy",
 		description:
 			"Soft steamed buns filled with savory tocino, bacon, and portuguese sausage.",
-		image: "/baoBuns.png",
+		image: "/baoBuns.webp",
 	},
 ];
 
