@@ -12,111 +12,76 @@ const fadeUp = {
 
 export default function AboutUs() {
   return (
-    <motion.section
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      className="max-w-4xl mx-auto px-6 py-24 space-y-14"
-    >
-      {/* Heading */}
-      <motion.div variants={fadeUp} className="scroll-mt-32" id="our-story">
-        <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#F28B8B] to-[#91C3B0] text-transparent bg-clip-text">
+    <section className="bg-[#FFF7F4] py-24 px-6 md:px-12">
+      {/* Title */}
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="mb-16 max-w-7xl mx-auto"
+      >
+        <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#F28B8B] to-[#91C3B0] text-transparent bg-clip-text mb-2 text-left">
           Our Story
-        </h1>
+        </h2>
+        <div className="w-16 h-1 bg-[#F28B8B] rounded-full" />
       </motion.div>
 
-      {/* Intro Paragraph */}
-      <motion.div variants={fadeUp} custom={1} className="space-y-4">
-        <p className="text-base md:text-lg leading-relaxed text-gray-700">
-          Bobalei was built on a vision to serve and connect{" "}
-          <span className="text-[#F28B8B] font-semibold">
-            our community through boba
-          </span>. Every drink we craft is a small act of love — a reason for
-          people to pause, smile, and share a moment together.
-        </p>
-      </motion.div>
-
-      {/* Real Story Moments */}
-      <motion.div variants={fadeUp} custom={2} className="space-y-4">
-        <p className="text-base md:text-lg leading-relaxed text-gray-700">
-          One of our favorite regulars is a local uncle who brings his grandkids
-          every Sunday. They always order strawberry smoothies with lychee jelly
-          and hang out by the window chatting about the surf. These rituals —
-          the unspoken, the ordinary — are what make Bobalei feel like home.
-        </p>
-        <figure className="relative w-full rounded-xl overflow-hidden shadow-md">
-          <div className="aspect-[4/3] w-full">
-            <img
-              src="/serving-smiles.jpg"
-              alt="Smiling customers"
-              className="w-full h-full object-cover"
-            />
+      {/* Main Content Layout */}
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center"
+      >
+        {/* Text Section */}
+        <div className="md:w-1/2 text-[#3A2E2E] text-base md:text-lg leading-loose text-center md:text-left md:flex md:items-center">
+          <div className="space-y-6 max-w-md mx-auto">
+            <p>
+              Bobalei started with a sanded-down horse trailer and a vision: to serve{" "}
+              <span className="text-[#F28B8B] font-semibold">our community through boba</span>. 
+              From the beginning, we were more than just drinks. Crafting açai bowls, blending real fruit smoothies, 
+              and building a menu that felt as fun and fresh as Maui itself.
+            </p>
+            <p>
+              Over time, the ideas kept coming. New flavors. New textures. Our own spin on the classics. 
+              We’re still serving handcrafted milk teas and açai bowls but now we’re also making bao buns, 
+              spam musubis, and savory snacks that hit just right.
+            </p>
+            <p>
+              Every item on the menu starts the same way: something we’re genuinely excited to eat. 
+              We use organic matcha, island-grown fruit, and build each recipe with care no shortcuts, no templates.
+            </p>
+            <p>
+              Today, we’re based in <span className="font-medium">Wailuku</span>, serving from a bigger truck 
+              with more space to create, connect, and keep experimenting.
+            </p>
+            <p>
+              The setup may look different from the early days, but the purpose is the same: <br />
+              <span className="text-[#F28B8B] font-medium">
+                Our community through boba. One cup, one bowl, one bite at a time.
+              </span>
+            </p>
           </div>
-          <figcaption className="absolute bottom-2 left-3 text-white text-sm bg-black/50 px-3 py-1 rounded-full backdrop-blur-sm font-handwritten">
-            “Where the community meets.”
-          </figcaption>
-        </figure>
-      </motion.div>
+        </div>
 
-      {/* Backstory */}
-      <motion.div variants={fadeUp} custom={3} className="space-y-4">
-        <p className="text-base md:text-lg leading-relaxed text-gray-700">
-          Bobalei started as a DIY project — a pink horse trailer, a couple of
-          drills, and a dream to make boba more fun and accessible. We sanded
-          it down by hand, piece by piece, turning a shell into a fully
-          functioning kitchen on wheels.
-        </p>
-        <figure className="relative w-full rounded-xl overflow-hidden shadow-md">
-          <div className="aspect-[4/3] w-full">
-            <img
-              src="/trailer-sanding.jpg"
-              alt="Sanding the trailer"
-              className="w-full h-full object-cover"
-            />
+        {/* Clean Modern Collage */}
+        <div className="md:w-1/2 grid grid-cols-2 gap-4 relative">
+          <div className="rounded-xl overflow-hidden transform translate-y-2 hover:scale-105 transition duration-300">
+            <img src="/sandingTruck.webp" alt="Sanding" className="w-full h-auto object-cover" />
           </div>
-          <figcaption className="absolute top-2 right-3 text-white text-sm bg-black/50 px-3 py-1 rounded-full backdrop-blur-sm font-handwritten">
-            “Boba with aloha.”
-          </figcaption>
-        </figure>
-      </motion.div>
-
-      {/* Opening in Kihei */}
-      <motion.div variants={fadeUp} custom={4} className="space-y-4">
-        <p className="text-base md:text-lg leading-relaxed text-gray-700">
-          We debuted in Kihei, and the response was beyond anything we imagined.
-          People lined up in slippers and swimsuits, drawn in by the bright pink
-          trailer and the smell of jasmine tea and brown sugar. That first day,
-          we sold out before the sun set.
-        </p>
-        <figure className="w-full rounded-xl overflow-hidden shadow-md">
-          <div className="aspect-[4/3] w-full">
-            <img
-              src="/pink-trailer.jpg"
-              alt="Finished pink trailer"
-              className="w-full h-full object-cover"
-            />
+          <div className="rounded-xl overflow-hidden transform -translate-y-4 hover:scale-105 transition duration-300">
+            <img src="/pinkTruck.webp" alt="Pink Truck" className="w-full h-auto object-cover" />
           </div>
-        </figure>
-      </motion.div>
-
-      {/* The New Truck */}
-      <motion.div variants={fadeUp} custom={5} className="space-y-4">
-        <p className="text-base md:text-lg leading-relaxed text-gray-700">
-          Today, we serve out of a fully upgraded food truck that reflects how far
-          we’ve come — and how much more we’re dreaming. But no matter how we
-          grow, the mission stays the same: to create joy through flavor, and
-          community through every cup.
-        </p>
-        <figure className="w-full rounded-xl overflow-hidden shadow-md">
-          <div className="aspect-[4/3] w-full">
-            <img
-              src="/new-food-truck.jpg"
-              alt="New Bobalei food truck"
-              className="w-full h-full object-cover"
-            />
+          <div className="rounded-xl overflow-hidden transform -translate-y-1 hover:scale-105 transition duration-300">
+            <img src="/serving-smiles.jpg" alt="Smiles" className="w-full h-auto object-cover" />
           </div>
-        </figure>
+          <div className="rounded-xl overflow-hidden transform translate-y-1 md:translate-y-4 hover:scale-105 transition duration-300">
+            <img src="/foodTruckNow.webp" alt="New Truck" className="w-full h-auto object-cover" />
+          </div>
+        </div>
       </motion.div>
-    </motion.section>
+    </section>
   );
 }
