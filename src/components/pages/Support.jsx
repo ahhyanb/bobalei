@@ -60,7 +60,7 @@ export default function Support() {
               <p className="text-gray-700 text-sm">
                 Message us on{" "}
                 <a
-                  href="https://facebook.com/bobalei.maui"
+                  href="https://www.facebook.com/profile.php?id=61557476235123"
                   target="_blank"
                   rel="noreferrer"
                   className="text-[#906249] underline"
