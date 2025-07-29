@@ -2,16 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/bean.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bobalei</title>
 
-    <!-- SEO Meta -->
-    <meta name="description" content="Our community through boba. Visit Bobalei or order online." />
+    <!-- 🔍 SEO Title & Description -->
+    <title>Bobalei - Boba Tea Truck on Mauie</title>
+    <meta name="description" content="Enjoy handcrafted boba tea in Wailuku, Maui. Visit Bobalei for milk teas, fruit refreshers, small bites, and good vibes!" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://bobalei.com/" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- 🧋 Favicon -->
+    <link rel="icon" href="/bean.png" type="image/png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/bean.png" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- 📱 Open Graph / Facebook -->
     <meta property="og:title" content="Bobalei - Milk, Tea, Refreshers" />
     <meta property="og:description" content="Our community through boba" />
     <meta property="og:url" content="https://bobalei.com" />
@@ -44,9 +48,21 @@
     }
     </script>
 
-    <!-- Fonts -->
+    <!-- 🏷️ Organization Logo Structured Data (for search result icon) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Bobalei",
+      "url": "https://bobalei.com",
+      "logo": "https://bobalei.com/bean.png"
+    }
+    </script>
+
+    <!-- 🔤 Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;700&display=swap" rel="stylesheet" />
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
