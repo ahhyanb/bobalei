@@ -2,32 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/bean.png" />
+    <link rel="icon" href="/bean.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bobalei</title>
 
-    <!-- SEO Meta Tags -->
-    <meta
-      name="description"
-      content="Our community through boba. Visit Bobalei or order online."
-    />
+    <!-- SEO Meta -->
+    <meta name="description" content="Our community through boba. Visit Bobalei or order online." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://bobalei.com/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Bobalei - Milk, Tea, Refreshers" />
-    <meta property="og:description" content="Our Community Through Boba" />
+    <meta property="og:description" content="Our community through boba" />
     <meta property="og:url" content="https://bobalei.com" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://bobalei.com/wailukuFoodTruck.webp" />
 
-    <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+    <!-- 📍 LocalBusiness Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CafeOrCoffeeShop",
+      "name": "Bobalei",
+      "image": "https://bobalei.com/wailukuFoodTruck.webp",
+      "url": "https://bobalei.com",
+      "telephone": "+1-808-318-3107",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1960 Main St",
+        "addressLocality": "Wailuku",
+        "addressRegion": "HI",
+        "postalCode": "96793",
+        "addressCountry": "US"
+      },
+      "priceRange": "$$",
+      "servesCuisine": ["Bubble Tea", "Snacks"],
+      "sameAs": [
+        "https://instagram.com/bobalei.maui",
+        "https://www.facebook.com/profile.php?id=61557476235123"
+      ]
+    }
+    </script>
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
