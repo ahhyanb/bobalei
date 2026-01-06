@@ -29,10 +29,10 @@ export default function Location() {
             <div className="flex items-start gap-4">
               <FaMapMarkerAlt className="mt-1 text-[#91C3B0]" />
               <div>
-                <h3 className="text-[#7E5C49] text-xl font-semibold">Wailuku Food Trucks</h3>
+                <h3 className="text-[#7E5C49] text-xl font-semibold">Launiupoko Food Trucks at West Maui Gardens</h3>
                 <p className="text-[#7E5C49]">
-                  1960 Main St.<br />
-                  Wailuku, HI 96793
+                  150 Kai Hele Ku St.<br />
+                  Lahaina, HI 96761
                 </p>
               </div>
             </div>
@@ -56,8 +56,8 @@ export default function Location() {
             <div>
               <h4 className="text-md font-semibold text-[#7E5C49] mb-2">Hours of Operation</h4>
               <ul className="text-sm text-[#7E5C49] leading-6">
-                <li>Monday – Saturday: 9:00am – 4:00pm</li>
-                <li>Sunday: Closed</li>
+                <li>Tuesday – Sunday: 8:00am – 4:00pm</li>
+                <li>Monday: Closed</li>
               </ul>
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function Location() {
         <div className="flex flex-col items-center gap-6">
           <div className="w-full rounded-xl overflow-hidden shadow-xl transform hover:scale-105 transition duration-500">
             <img
-              src="/bobalei-location.png"
+              src="/bobalei-launiupoko.png"
               alt="Map showing Bobalei's Wailuku location"
               className="w-full h-full object-cover"
             />
@@ -75,8 +75,7 @@ export default function Location() {
 
           {/* Google Maps Button UNDER the map now */}
           <a
-            href="https://www.google.com/maps/place/Bobalei/@20.8882059,-156.5035449,17z/data=!3m1!4b1!4m6!3m5!1s0x7954d3d0a3bf98df:0x5255600bfee16333!8m2!3d20.8882059!4d-156.50097!16s%2Fg%2F11x0j5n6r9?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D"
-            target="_blank"
+            href="https://www.google.com/maps/place/150+Kai+Hele+Ku+St,+Lahaina,+HI+96761/@20.8427049,-156.6525406,17z/data=!3m1!4b1!4m10!1m2!2m1!1s150+Kai+Hele+Ku+St,+Lahaina,+HI+96761!3m6!1s0x79552989f500ddf9:0xc9e4f4c7e24942de!8m2!3d20.8427!4d-156.6476697!15sCiUxNTAgS2FpIEhlbGUgS3UgU3QsIExhaGFpbmEsIEhJIDk2NzYxkgEQZ2VvY29kZWRfYWRkcmVzc-ABAA!16s%2Fg%2F11k9dkzkl0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
             rel="noopener noreferrer"
             className="inline-block border border-[#91C3B0] text-[#91C3B0] px-6 py-2 rounded-full text-sm hover:bg-[#91C3B0] hover:text-white transition"
           >
